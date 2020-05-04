@@ -7,16 +7,14 @@ export class UserRouter {
   public router(app: Application): void {
     app
       .route("/users")
-      .get((req: Request, res: Response) => this.userCtrl.users(req, res));
+      .get((req: Request, res: Response) => this.userCtrl.users(req, res))
+      .post((req: Request, res: Response) => this.userCtrl.saveOrUpdate(req, res));
 
     app
       .route("/users/:id")
       .get((req: Request, res: Response) => this.userCtrl.user(req, res))
-      .put((req: Request, res: Response) =>
-        this.userCtrl.saveOrUpdate(req, res)
-      )
-      .delete((req: Request, res: Response) =>
-        this.userCtrl.deleteUser(req, res)
+      .put((req: Request, res: Response) => this.userCtrl.saveOrUpdate(req, res))
+      .delete((req: Request, res: Response) => this.userCtrl.deleteUser(req, res)
       );
   }
 }

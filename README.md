@@ -1,24 +1,15 @@
 # Desafio Interface
 
-API simples para aplicação do teste de interface
+API simples para aplicação do teste de frontend
 
 ## Pre Requisitos
 
 - Node + NPM
-- Typescript
-- Nodemon
-- Ts Node
 
 ### Instalação Node
 
 - [Windows](https://dicasdejavascript.com.br/instalacao-do-nodejs-e-npm-no-windows-passo-a-passo/)
 - [Linux](https://github.com/nvm-sh/nvm)
-
-### Instalação Global dos pacotes node
-
-```sh
-npm install -g nodemon ts-node typescript
-```
 
 ### Instalação das dependencais do projeto
 
@@ -33,7 +24,7 @@ npm install
 Para rodar o projeto rode o comando no diretorio do projeto:
 
 ```sh
-npm run prod
+npm run dev
 ```
 
 ### End Points

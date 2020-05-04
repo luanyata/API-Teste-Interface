@@ -3,7 +3,7 @@ import * as bodyParse from 'body-parser';
 import * as Helmet from "helmet";
 import * as cors from 'cors';
 
-import {UserRouter} from './routers/user.router'
+import { UserRouter } from './routers/user.router'
 
 class App {
     public app: express.Application;
@@ -16,7 +16,7 @@ class App {
 
     private middleware(): void {
         this.app.use(cors());
-        this.app.use(bodyParse.json());
+        this.app.use(express.json());
         this.app.use(bodyParse.urlencoded({ extended: false }));
         this.app.use(Helmet());
     }

@@ -5,7 +5,20 @@ let list = LIST_USER;
 
 export class UserService {
   public getAll(): ListUser[] {
-    return list;
+
+    const listUser: ListUser[] = list.map(user => {
+
+      const { id, name, login, company } = user;
+      let newUser: ListUser = {
+        id,
+        name,
+        login,
+        company
+      }
+      return newUser
+    })
+
+    return listUser;
   }
 
   public get(id: number): User {
@@ -13,35 +26,14 @@ export class UserService {
 
     console.log(`Id usado para recuperar o Usuário ${id}`);
 
-    const user: User = {
-      id: id,
-      name: "Audra",
-      lastname: "Tanek",
-      login: "audra.tanek",
-      password: "XAK46PTH6HG",
-      dateNasc: "Thu Oct 25 2018 14:24:25 GMT-0300 (Brasilia Standard Time)",
-      contact: {
-        phones: [
-          { id: 1, value: "99999-9999" },
-          { id: 2, value: "88888-8888" },
-          { id: 3, value: "77777-7777" },
-          { id: 4, value: "66666-6666" }
-        ],
-        emails: [{ id: 1, value: "arcu.Vestibulum.ut@amet.org" }]
-      },
-      address: {
-        street: "Rua Orlando Phillipi",
-        city: "Florianopolis",
-        state: "SC",
-        country: "Brasil",
-        zip: "88.500-000"
-      }
-    };
+    const user = list.find(user => user.id === id)
+
     return user;
   }
 
   public delete(id: number): boolean {
     if (!id) throw Error("Id do usuário não informado");
+
     list.filter(user => user.id !== id);
     return true;
   }
@@ -51,10 +43,14 @@ export class UserService {
       list.map(e => {
         if (e.id === user.id) {
           e.name = user.name;
-          e.lastname = user.lastname;
           e.login = user.login;
+          e.company = user.company
           e.password = user.password;
-
+          e.street = user.street;
+          e.city = user.city;
+          e.country = user.country;
+          e.zip = user.zip
+          e.phoneNumber = user.phoneNumber
           return e;
         }
       });
